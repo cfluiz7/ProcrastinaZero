@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procrastinação Zero | Recupere seus estudos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Procrastinação Zero</h1>
+            <button id="theme-toggle" aria-label="Alternar tema">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li class="active"><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#cronograma"><i class="fas fa-calendar"></i> Cronograma</a></li>
+                <li><a href="#habitos"><i class="fas fa-chart-bar"></i> Hábitos</a></li>
+                <li><a href="#progresso"><i class="fas fa-trophy"></i> Progresso</a></li>
+                <li><a href="#configuracoes"><i class="fas fa-cog"></i> Config</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Página Inicial -->
+            <section id="inicio" class="page active">
+                <div class="motivation-card">
+                    <h2>Bem-vindo ao Procrastinação Zero</h2>
+                    <p>Sua plataforma completa para recuperar seus estudos e vencer a procrastinação. Comece hoje mesmo a transformar seus hábitos!</p>
+                    <div class="user-level">
+                        <span>Nível <span id="user-level">1</span></span>
+                        <span><span id="user-xp">30</span> XP</span>
+                    </div>
+                </div>
+
+                <h3>Rituais Diários</h3>
+                <div class="card-grid">
+                    <div class="card ritual-card" id="ritual-matinal">
+                        <div class="card-header">
+                            <h4><i class="fas fa-sun"></i> Ritual Matinal</h4>
+                            <span class="date">Hoje</span>
+                        </div>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="agua-matinal">
+                                <label for="agua-matinal">Beber um copo d'água</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="alimentacao-matinal">
+                                <label for="alimentacao-matinal">Comer algo saudável</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="missao-dia">
+                                <label for="missao-dia">Definir a missão do dia</label>
+                            </div>
+                        </div>
+                        <div class="tip">
+                            <i class="fas fa-tint"></i>
+                            <span>Lembre-se de beber água durante o dia!</span>
+                        </div>
+                    </div>
+
+                    <div class="card ritual-card" id="ritual-noturno">
+                        <div class="card-header">
+                            <h4><i class="fas fa-moon"></i> Ritual Noturno</h4>
+                            <span class="date">Hoje</span>
+                        </div>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="preparacao">
+                                <label for="preparacao">Preparar material para amanhã</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="reflexao">
+                                <label for="reflexao">Refletir sobre o dia</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="dormir">
+                                <label for="dormir">Definir hora de dormir</label>
+                            </div>
+                        </div>
+                        <div class="tip">
+                            <i class="fas fa-clock"></i>
+                            <span>Dormir cedo ajuda na recuperação do corpo e mente!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Foco nos Estudos</h3>
+                <div class="card-grid">
+                    <div class="card" id="pomodoro-card">
+                        <h4><i class="fas fa-clock"></i> Pomodoro Timer</h4>
+                        <div class="pomodoro-timer">
+                            <div id="timer">25:00</div>
+                            <div class="timer-controls">
+                                <button id="start-timer"><i class="fas fa-play"></i></button>
+                                <button id="reset-timer"><i class="fas fa-redo"></i></button>
+                            </div>
+                        </div>
+                        <div class="timer-mode">
+                            Modo: <span id="timer-mode">Foco</span>
+                        </div>
+                        <div class="timer-tip">
+                            Concentre-se na sua tarefa atual
+                        </div>
+                    </div>
+
+                    <div class="card" id="focus-card">
+                        <h4><i class="fas fa-bullseye"></i> Modo Foco</h4>
+                        <p>Ative o modo foco para bloquear distrações e concentrar-se nos estudos.</p>
+                        <div class="focus-time">
+                            <label for="focus-time-range">Tempo de foco (minutos)</label>
+                            <input type="range" id="focus-time-range" min="5" max="60" step="5" value="25">
+                            <div class="range-labels">
+                                <span>5 min</span>
+                                <span id="focus-time-value">25 min</span>
+                                <span>60 min</span>
+                            </div>
+                        </div>
+                        <button id="activate-focus" class="btn-primary">Ativar Modo Foco</button>
+                    </div>
+                </div>
+
+                <h3>Seus Hábitos</h3>
+                <div class="card-grid">
+                    <div class="card" id="habit-tracker">
+                        <h4><i class="fas fa-chart-line"></i> Monitoramento Diário</h4>
+                        
+                        <div class="habit-item">
+                            <div class="habit-header">
+                                <span><i class="fas fa-tint"></i> Hidratação</span>
+                                <span id="water-count">0/8 copos</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="water-progress" style="width: 0%"></div>
+                            </div>
+                            <div class="habit-controls">
+                                <button class="btn-small" id="water-minus">-</button>
+                                <button class="btn-small" id="water-plus">+ Copo</button>
+                            </div>
+                        </div>
+                        
+                        <div class="habit-item">
+                            <div class="habit-header">
+                                <span><i class="fas fa-apple-alt"></i> Refeições Saudáveis</span>
+                                <span id="meal-count">0/5 refeições</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="meal-progress" style="width: 0%"></div>
+                            </div>
+                            <div class="habit-controls">
+                                <button class="btn-small" id="meal-minus">-</button>
+                                <button class="btn-small" id="meal-plus">+ Refeição</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" id="progress-card">
+                        <h4><i class="fas fa-trophy"></i> Seu Progresso</h4>
+                        <div class="level-indicator">
+                            <span class="level-badge">Nível 1</span>
+                        </div>
+                        <div class="xp-progress">
+                            <div class="xp-header">
+                                <span>XP</span>
+                                <span id="xp-count">30/100</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="xp-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="streak-counter">
+                            <i class="fas fa-fire"></i>
+                            <span id="streak-count">3 dias seguidos</span>
+                        </div>
+                        <div class="medals">
+                            <div class="medal obtained">
+                                <i class="fas fa-medal"></i>
+                                <span>Primeiro Dia</span>
+                            </div>
+                            <div class="medal obtained">
+                                <i class="fas fa-medal"></i>
+                                <span>3 Dias Seguidos</span>
+                            </div>
+                            <div class="medal">
+                                <i class="fas fa-medal"></i>
+                                <span>Hidratação Perfeita</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cronograma -->
+            <section id="cronograma" class="page">
+                <h2>Cronograma de Estudos</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-clock"></i> Pomodoro</h4>
+                        <div class="pomodoro-timer">
+                            <div id="cronograma-timer">25:00</div>
+                            <div class="timer-controls">
+                                <button id="cronograma-start-timer"><i class="fas fa-play"></i></button>
+                                <button id="cronograma-reset-timer"><i class="fas fa-redo"></i></button>
+                            </div>
+                        </div>
+                        <div class="timer-mode">
+                            Modo: <span id="cronograma-timer-mode">Foco</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-plus"></i> Adicionar Tarefa</h4>
+                        <div class="form-group">
+                            <label for="materia-select">Matéria</label>
+                            <select id="materia-select">
+                                <option value="">Selecione uma matéria</option>
+                                <option value="mat1">Matemática</option>
+                                <option value="port1">Português</option>
+                                <option value="hist1">História</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tarefa-descricao">Descrição</label>
+                            <input type="text" id="tarefa-descricao" placeholder="O que você precisa estudar?">
+                        </div>
+                        <div class="form-group">
+                            <label for="tarefa-duracao">Duração (minutos)</label>
+                            <input type="number" id="tarefa-duracao" min="5" step="5" value="25">
+                        </div>
+                        <button id="adicionar-tarefa" class="btn-primary">Adicionar Tarefa</button>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-book"></i> Suas Matérias</h4>
+                        <div id="materias-lista">
+                            <div class="materia-item">
+                                <div class="materia-header">
+                                    <h5>Matemática</h5>
+                                    <span class="badge badge-danger">Alta</span>
+                                </div>
+                                <div class="materia-topicos">
+                                    <span class="topicos-label">Tópicos:</span>
+                                    Álgebra, Geometria, Estatística
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-header">
+                                    <h5>Português</h5>
+                                    <span class="badge badge-warning">Média</span>
+                                </div>
+                                <div class="materia-topicos">
+                                    <span class="topicos-label">Tópicos:</span>
+                                    Gramática, Interpretação, Redação
+                                </div>
+                            </div>
+                            <div class="materia-item">
+                                <div class="materia-header">
+                                    <h5>História</h5>
+                                    <span class="badge badge-success">Baixa</span>
+                                </div>
+                                <div class="materia-topicos">
+                                    <span class="topicos-label">Tópicos:</span>
+                                    Brasil Colônia, Idade Média, Revolução Industrial
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h5 class="mt-4">Adicionar Matéria</h5>
+                        <div class="form-group">
+                            <label for="nova-materia-nome">Nome da Matéria</label>
+                            <input type="text" id="nova-materia-nome" placeholder="Ex: Física">
+                        </div>
+                        <div class="form-group">
+                            <label for="nova-materia-prioridade">Prioridade</label>
+                            <select id="nova-materia-prioridade">
+                                <option value="alta">Alta</option>
+                                <option value="media" selected>Média</option>
+                                <option value="baixa">Baixa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nova-materia-topicos">Tópicos (separados por vírgula)</label>
+                            <input type="text" id="nova-materia-topicos" placeholder="Ex: Mecânica, Óptica, Termodinâmica">
+                        </div>
+                        <button id="adicionar-materia" class="btn-primary">Adicionar Matéria</button>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-tasks"></i> Tarefas de Hoje</h4>
+                        <div id="tarefas-lista">
+                            <div class="tarefa-item">
+                                <input type="checkbox" id="tarefa1">
+                                <label for="tarefa1">
+                                    <span class="tarefa-descricao">Resolver exercícios de álgebra</span>
+                                    <div class="tarefa-detalhes">
+                                        <span>Matemática</span>
+                                        <span>25 min</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="tarefa-item">
+                                <input type="checkbox" id="tarefa2">
+                                <label for="tarefa2">
+                                    <span class="tarefa-descricao">Ler capítulo sobre sintaxe</span>
+                                    <div class="tarefa-detalhes">
+                                        <span>Português</span>
+                                        <span>25 min</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="tarefa-item">
+                                <input type="checkbox" id="tarefa3">
+                                <label for="tarefa3">
+                                    <span class="tarefa-descricao">Resumir texto sobre Brasil Colônia</span>
+                                    <div class="tarefa-detalhes">
+                                        <span>História</span>
+                                        <span>25 min</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hábitos -->
+            <section id="habitos" class="page">
+                <h2>Monitoramento de Hábitos</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-tint"></i> Hidratação</h4>
+                        <div class="habit-item">
+                            <div class="habit-header">
+                                <span>Hoje</span>
+                                <span id="habitos-water-count">0/8 copos</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="habitos-water-progress" style="width: 0%"></div>
+                            </div>
+                            <div class="habit-controls">
+                                <button class="btn-small" id="habitos-water-minus">-</button>
+                                <button class="btn-small" id="habitos-water-plus">+ Copo</button>
+                            </div>
+                        </div>
+                        <div class="habit-stats">
+                            <div class="stat-item">
+                                <span>Média dos últimos dias:</span>
+                                <span id="water-average">5.5 copos</span>
+                            </div>
+                            <div class="stat-message" id="water-message">
+                                Você precisa melhorar sua hidratação!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-apple-alt"></i> Alimentação</h4>
+                        <div class="habit-item">
+                            <div class="habit-header">
+                                <span>Hoje</span>
+                                <span id="habitos-meal-count">0/5 refeições</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="habitos-meal-progress" style="width: 0%"></div>
+                            </div>
+                            <div class="habit-controls">
+                                <button class="btn-small" id="habitos-meal-minus">-</button>
+                                <button class="btn-small" id="habitos-meal-plus">+ Refeição</button>
+                            </div>
+                        </div>
+                        <div class="habit-stats">
+                            <div class="stat-item">
+                                <span>Média dos últimos dias:</span>
+                                <span id="meal-average">3.5 refeições</span>
+                            </div>
+                            <div class="stat-message" id="meal-message">
+                                Boa alimentação! Continue assim.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-moon"></i> Sono</h4>
+                        <div class="form-group">
+                            <label for="sono-horas">Quantas horas você dormiu na noite passada?</label>
+                            <div class="range-container">
+                                <input type="range" id="sono-horas" min="0" max="12" step="0.5" value="7">
+                                <span id="sono-horas-value">7h</span>
+                            </div>
+                        </div>
+                        <div class="tip">
+                            <h5>Dica para melhorar o sono:</h5>
+                            <p>Evite telas (celular, computador, TV) pelo menos 1 hora antes de dormir.
+                            A luz azul interfere na produção de melatonina, hormônio do sono.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-brain"></i> Estudos</h4>
+                        <div class="form-group">
+                            <label for="estudo-horas">Quantas horas você estudou hoje?</label>
+                            <div class="range-container">
+                                <input type="range" id="estudo-horas" min="0" max="10" step="0.5" value="2">
+                                <span id="estudo-horas-value">2h</span>
+                            </div>
+                        </div>
+                        <div class="tip">
+                            <h5>Dica para estudos eficientes:</h5>
+                            <p>Estudar por períodos curtos e intensos (25 minutos) com pequenas pausas (5 minutos)
+                            é mais eficiente que longas sessões sem intervalos. Use o método Pomodoro!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-chart-bar"></i> Histórico de Hábitos</h4>
+                    <div class="table-container">
+                        <table class="habits-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Água</th>
+                                    <th>Refeições</th>
+                                    <th>Sono</th>
+                                    <th>Estudos</th>
+                                </tr>
+                            </thead>
+                            <tbody id="habits-history">
+                                <tr>
+                                    <td>24/04/2025</td>
+                                    <td class="text-success">5 copos</td>
+                                    <td class="text-success">3 ref.</td>
+                                    <td class="text-warning">6h</td>
+                                    <td class="text-success">2h</td>
+                                </tr>
+                                <tr>
+                                    <td>25/04/2025</td>
+                                    <td class="text-success">6 copos</td>
+                                    <td class="text-success">4 ref.</td>
+                                    <td class="text-success">7h</td>
+                                    <td class="text-success">3h</td>
+                                </tr>
+                                <tr>
+                                    <td>26/04/2025</td>
+                                    <td class="text-warning">2 copos</td>
+                                    <td class="text-warning">1 ref.</td>
+                                    <td class="text-danger">0h</td>
+                                    <td class="text-warning">1h</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progresso -->
+            <section id="progresso" class="page">
+                <h2>Seu Progresso</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-trophy"></i> Nível e Experiência</h4>
+                        <div class="level-name">
+                            <h3 id="level-title">Iniciante</h3>
+                        </div>
+                        <div class="xp-progress">
+                            <div class="xp-header">
+                                <span>XP para o próximo nível</span>
+                                <span id="progresso-xp-count">30/100</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progresso-xp-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="streak-counter">
+                            <i class="fas fa-fire"></i>
+                            <span id="progresso-streak-count">3 dias seguidos</span>
+                        </div>
+                        <div class="level-benefits">
+                            <h5>Benefícios do seu nível:</h5>
+                            <ul>
+                                <li>Acesso às funcionalidades básicas</li>
+                            </ul>
+                        </div>
+                        <div class="next-level">
+                            <p>Próximo nível: <span class="font-medium">Aprendiz</span></p>
+                            <p class="small">Faltam 70 pontos de experiência</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-chart-line"></i> Como Ganhar XP</h4>
+                        <div class="xp-items">
+                            <div class="xp-item">
+                                <span>Completar tarefas</span>
+                                <span class="xp-value">+10 XP</span>
+                            </div>
+                            <div class="xp-item">
+                                <span>Ciclo Pomodoro</span>
+                                <span class="xp-value">+5 XP</span>
+                            </div>
+                            <div class="xp-item">
+                                <span>Beber 8 copos de água</span>
+                                <span class="xp-value">+15 XP</span>
+                            </div>
+                            <div class="xp-item">
+                                <span>5 refeições saudáveis</span>
+                                <span class="xp-value">+15 XP</span>
+                            </div>
+                            <div class="xp-item">
+                                <span>Dormir 8 horas</span>
+                                <span class="xp-value">+10 XP</span>
+                            </div>
+                            <div class="xp-item">
+                                <span>Conquistar medalha</span>
+                                <span class="xp-value">+25 XP</span>
+                            </div>
+                            <div class="xp-item">
+                                <span>Manter sequência diária</span>
+                                <span class="xp-value">+5 XP por dia</span>
+                            </div>
+                        </div>
+                        <button id="simular-xp" class="btn-primary">Simular ganho de XP (+10)</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-medal"></i> Suas Conquistas</h4>
+                    <div class="medals-grid">
+                        <div class="medal-card obtained">
+                            <div class="medal-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h5>Primeiro Passo</h5>
+                            <p>Completou seu primeiro dia no sistema</p>
+                            <div class="medal-date">Conquistado em 23/04/2025</div>
+                        </div>
+                        <div class="medal-card obtained">
+                            <div class="medal-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h5>Sequência Inicial</h5>
+                            <p>Manteve 3 dias seguidos de atividade</p>
+                            <div class="medal-date">Conquistado em 25/04/2025</div>
+                        </div>
+                        <div class="medal-card">
+                            <div class="medal-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <h5>Hidratação Consciente</h5>
+                            <p>Bebeu 8 copos de água em um único dia</p>
+                            <button class="btn-small" data-medal-id="3">Simular conquista</button>
+                        </div>
+                        <div class="medal-card">
+                            <div class="medal-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h5>Mestre do Foco</h5>
+                            <p>Completou 5 ciclos Pomodoro em um dia</p>
+                            <button class="btn-small" data-medal-id="4">Simular conquista</button>
+                        </div>
+                        <div class="medal-card">
+                            <div class="medal-icon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <h5>Dorminhoco Saudável</h5>
+                            <p>Dormiu pelo menos 8 horas por 5 dias seguidos</p>
+                            <button class="btn-small" data-medal-id="5">Simular conquista</button>
+                        </div>
+                        <div class="medal-card">
+                            <div class="medal-icon">
+                                <i class="fas fa-apple-alt"></i>
+                            </div>
+                            <h5>Alimentação Equilibrada</h5>
+                            <p>Registrou 5 refeições saudáveis em um dia</p>
+                            <button class="btn-small" data-medal-id="6">Simular conquista</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4><i class="fas fa-bullseye"></i> Dicas Motivacionais</h4>
+                    <div class="quotes">
+                        <div class="quote">
+                            <p>"A disciplina é a ponte entre metas e realizações."</p>
+                            <cite>— Jim Rohn</cite>
+                        </div>
+                        <div class="quote">
+                            <p>"Não espere por circunstâncias ideais. Nunca serão ideais. Comece onde você está."</p>
+                            <cite>— Napoleon Hill</cite>
+                        </div>
+                        <div class="quote">
+                            <p>"O segredo para seguir em frente é começar."</p>
+                            <cite>— Mark Twain</cite>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configurações -->
+            <section id="configuracoes" class="page">
+                <h2>Configurações</h2>
+                
+                <div id="config-message" class="message success" style="display: none;">
+                    Configurações salvas com sucesso!
+                </div>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-palette"></i> Aparência</h4>
+                        <div class="form-group">
+                            <label>Tema</label>
+                            <div class="button-group">
+                                <button id="theme-light" class="btn-option active">
+                                    <i class="fas fa-sun"></i> Claro
+                                </button>
+                                <button id="theme-dark" class="btn-option">
+                                    <i class="fas fa-moon"></i> Escuro
+                                </button>
+                                <button id="theme-system" class="btn-option">
+                                    Sistema
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-bell"></i> Notificações</h4>
+                        <div class="toggle-item">
+                            <div class="toggle-label">
+                                <i class="fas fa-bell"></i>
+                                <span>Lembretes e alertas</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="notificacoes-toggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-item">
+                            <div class="toggle-label">
+                                <i class="fas fa-volume-up"></i>
+                                <span>Sons de notificação</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="sons-toggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4><i class="fas fa-bed"></i> Rotina de Sono</h4>
+                        <div class="form-group">
+                            <label for="hora-dormir">Horário para dormir</label>
+                            <input type="time" id="hora-dormir" value="22:30">
+                        </div>
+                        <div class="form-group">
+                            <label for="hora-acordar">Horário para acordar</label>
+                            <input type="time" id="hora-acordar" value="07:00">
+                        </div>
+                        <div class="tip">
+                            <p>Tempo de sono recomendado: 7-9 horas por noite</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-bullseye"></i> Metas Diárias</h4>
+                        <div class="form-group">
+                            <label for="meta-agua">Copos de água</label>
+                            <input type="number" id="meta-agua" min="1" max="12" value="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta-refeicoes">Refeições saudáveis</label>
+                            <input type="number" id="meta-refeicoes" min="1" max="6" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta-estudos">Horas de estudo</label>
+                            <input type="number" id="meta-estudos" min="1" max="10" value="4">
+                        </div>
+                        <div class="form-group">
+                            <label for="meta-sono">Horas de sono</label>
+                            <input type="number" id="meta-sono" min="5" max="12" value="8">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-actions">
+                    <button id="reset-config" class="btn-secondary">
+                        <i class="fas fa-redo"></i> Resetar
+                    </button>
+                    <button id="save-config" class="btn-primary">
+                        <i class="fas fa-save"></i> Salvar Configurações
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="focus-mode-overlay" class="hidden">
+        <button id="exit-focus-mode" class="exit-focus">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="focus-content">
+            <h2>Modo Foco Ativado</h2>
+            <p>Concentre-se na sua tarefa</p>
+            
+            <div class="focus-timer" id="focus-timer">25:00</div>
+            
+            <div class="focus-tips">
+                <h3>Dicas para manter o foco:</h3>
+                <ul>
+                    <li>Respire fundo e mantenha a calma</li>
+                    <li>Foque em uma tarefa por vez</li>
+                    <li>Elimine distrações do ambiente</li>
+                    <li>Beba água regularmente</li>
+                    <li>Faça pequenas pausas quando necessário</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="water-reminder" class="hidden">
+        <div class="reminder-content">
+            <i class="fas fa-tint"></i>
+            <span>Hora de beber água! Hidrate-se para manter o foco.</span>
+        </div>
+        <button id="close-reminder" class="close-reminder">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
